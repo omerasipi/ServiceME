@@ -35,26 +35,110 @@
         font-src * 'unsafe-inline';
         media-src * blob:;
         img-src * data:;">
+
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDG4GIjypq_Bzl2seXhjZBR5FwMEeNN4gA",
+                authDomain: "serviceme-69587.firebaseapp.com",
+                databaseURL: "https://serviceme-69587.firebaseio.com",
+                projectId: "serviceme-69587",
+                storageBucket: "serviceme-69587.appspot.com",
+                messagingSenderId: "326807269904"
+            };
+            firebase.initializeApp(config);
+        </script>
         <meta charset="UTF-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font_awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="css/onsenui.css">
         <link rel="stylesheet" href="css/onsen-css-components.min.css">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <script src="js/onsenui.min.js"></script>
+        <script src="js/scripti.js"></script>
         <title>ServiceME</title>
     </head>
     <body>
-    <section style="padding: 8px" class="center">
-        <ons-button modifier="" class="">Ticket eröffnen</ons-button>
-        <p></p>
-        <ons-button modifier="">Tickets verwalten</ons-button>
-    </section>
-    <p><button onclick="geoFindMe()">Zeige meine Position an</button></p>
-    <div id="out"></div>
+
+
+
+    <!--<div class="tabbar">-->
+        <!--<label class="tabbar__item">-->
+            <!--<input type="radio" name="tabbar-b" checked="checked">-->
+            <!--<button class="tabbar__button" id="tOeffnen">-->
+                <!--<i class="far fa-file-alt"></i>-->
+            <!--</button>-->
+        <!--</label>-->
+
+        <!--<label class="tabbar__item">-->
+            <!--<input type="radio" name="tabbar-b">-->
+            <!--<button class="tabbar__button" id="tVerwalten" onclick="displayVerwalten()">-->
+                <!--<i class="far fa-edit"></i>-->
+            <!--</button>-->
+        <!--</label>-->
+
+        <!--<label class="tabbar__item">-->
+            <!--<input type="radio" name="tabbar-b">-->
+            <!--<button class="tabbar__button">-->
+                <!--<i class="fas fa-cog"></i>-->
+            <!--</button>-->
+        <!--</label>-->
+
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Ticket eröffnen</div>
+            </ons-toolbar>
+
+            <ons-tabbar swipeable position="bottom">
+                <ons-tab page="tab1.html" label="" beschreibung="Ticket eröffnen" icon="fa-file-text"  active>
+                </ons-tab>
+                <ons-tab page="tab2.html" label="" beschreibung="Tickets verwalten" icon="fa-pencil-square">
+                </ons-tab>
+                <ons-tab page="tab3.html" label="" beschreibung="Einstellungen" icon="md-settings">
+                </ons-tab>
+            </ons-tabbar>
+        </ons-page>
+
+        <template id="tab1.html">
+            <ons-page id="Tab1">
+                <p style="text-align: center;">
+                    <section style="padding: 8px;width: 80%;" class="center" id="menu1">
+                        <ons-button modifier="large" class="buttoni" id="b1">Ticket eröffnen</ons-button>
+                        <ons-button modifier="large" class="buttoni" id="b2">Tickets verwalten</ons-button>
+                    </section>
+                </p>
+            </ons-page>
+        </template>
+
+        <template id="tab2.html">
+            <ons-page id="Tab2">
+                <p style="text-align: center;">
+                    <section style="padding: 8px;width: 80%;" class="center" id="menu2">
+                        <ons-button modifier="large" class="buttoni" id="b1">2</ons-button>
+                        <ons-button modifier="large" class="buttoni" id="b2">3</ons-button>
+                    </section>
+                </p>
+            </ons-page>
+        </template>
+
+    <template id="tab3.html">
+        <ons-page id="Tab2">
+            <p style="text-align: center;">
+                <section style="padding: 8px;width: 80%;" class="center" id="menu3">
+                    <ons-button modifier="large" class="buttoni" id="b1">5</ons-button>
+                    <ons-button modifier="large" class="buttoni" id="b2">6</ons-button>
+                </section>
+            </p>
+        </ons-page>
+    </template>
+
+    </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

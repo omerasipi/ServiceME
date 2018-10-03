@@ -10,7 +10,6 @@ html {
 
 .center {
     position: relative;
-    border: 3px solid green;
 
     margin: 0;
     position: absolute;
@@ -18,4 +17,13 @@ html {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.buttoni {
+    padding: 4em;
+    margin-bottom: 20px;
+}
+
+.hide {
+    display: none;
 }

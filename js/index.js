@@ -28,16 +28,15 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('beschreibung');
+        });
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
@@ -71,3 +70,15 @@ function geoFindMe() {
     navigator.geolocation.getCurrentPosition(success, error);
 }
 app.initialize();
+
+function displayOeffnen() {
+    document.getElementById("menu1").style.display = "block";
+    document.getElementById("menu2").style.display = "none";
+    console.log("Display1");
+}
+
+function displayVerwalten() {
+    document.getElementById("menu1").style.display = "none";
+    document.getElementById("menu2").style.display = "block";
+    console.log("Display2");
+}
