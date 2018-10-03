@@ -35,30 +35,25 @@
         font-src * 'unsafe-inline';
         media-src * blob:;
         img-src * data:;">
+        <meta charset="UTF-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <title>Heyho</title>
+        <link rel="stylesheet" href="css/onsenui.css">
+        <link rel="stylesheet" href="css/onsen-css-components.min.css">
+        <script src="js/onsenui.min.js"></script>
+        <title>ServiceME</title>
     </head>
     <body>
-<!--         <div class="app">
-            <h1>Kriezi Chrüzwis</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device ish parat</p>
-            </div>
-        </div> -->
-        <div class="col-xs-1 text-center">
-            <div>
-                 <button class="btn btn-primary" type="button">Ticket eröffnen</button>
-            </div>
-            <div>
-                <button class="btn btn-info" type="button">Tickets verwalten</button>
-            </div>
-        </div>
+    <ons-fab position="bottom right">
+        <ons-icon
+                icon="md-plus">
+        </ons-icon>
+    </ons-fab>
+    <ons-button someAttribute="true" anotherAttribute><ons-button>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
