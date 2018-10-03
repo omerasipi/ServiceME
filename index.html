@@ -109,8 +109,24 @@
             <ons-page id="Tab1">
                 <p style="text-align: center;">
                     <section style="padding: 8px;width: 80%;" class="center" id="menu1">
-                        <ons-button modifier="large" class="buttoni" id="b1">Ticket eröffnen</ons-button>
-                        <ons-button modifier="large" class="buttoni" id="b2">Tickets verwalten</ons-button>
+                        <ul class="list">
+                            <li class="list-item">
+                                <div class="list-item__center">
+                                    <input type="text" class="text-input" placeholder="Vorname">
+                                </div>
+                            </li>
+                            <li class="list-item">
+                                <div class="list-item__center">
+                                    <input type="text" class="text-input" placeholder="Nachname">
+                                </div>
+                            </li>
+                            <li class="list-item">
+                                <div class="list-item__center">
+                                    <input type="text" class="text-input" placeholder="Telefonnummer">
+                                </div>
+                            </li>
+                            <ons-button modifier="large" class="buttoni" id="b1">Absenden</ons-button>
+                        </ul>
                     </section>
                 </p>
             </ons-page>

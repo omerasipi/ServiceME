@@ -5,8 +5,14 @@
 }
 
 html {
+
     background: #f9f9f9;
+
 }
+*{
+    font-size: 1.03em !important;
+}
+
 
 .center {
     position: relative;
@@ -20,10 +26,15 @@ html {
 }
 
 .buttoni {
-    padding: 4em;
-    margin-bottom: 20px;
+    padding: 2em;
+    border-radius: 0px;
 }
 
 .hide {
     display: none;
+}
+.text-input{
+
+    margin: 10px;
+    height: 50px;
 }
