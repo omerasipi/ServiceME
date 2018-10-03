@@ -28,6 +28,18 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDG4GIjypq_Bzl2seXhjZBR5FwMEeNN4gA",
+            authDomain: "serviceme-69587.firebaseapp.com",
+            databaseURL: "https://serviceme-69587.firebaseio.com",
+            projectId: "serviceme-69587",
+            storageBucket: "serviceme-69587.appspot.com",
+            messagingSenderId: "326807269904"
+        };
+        firebase.initializeApp(config);
+
+        document.getElementById('submitButton').addEventListener('click', submitButton);
         document.addEventListener('prechange', function(event) {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('beschreibung');
@@ -41,6 +53,8 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
 function geoFindMe() {
     var output = document.getElementById("out");
 
@@ -81,4 +95,24 @@ function displayVerwalten() {
     document.getElementById("menu1").style.display = "none";
     document.getElementById("menu2").style.display = "block";
     console.log("Display2");
+}
+
+
+
+
+function submitButton() {
+    var vorname = document.getElementById("vorname").value;
+    firebase.database().ref().set({
+        vorname: vorname
+    });
+
+    window.alert("könig");
+
+}
+
+function writeUserData(userId, name, email) {
+    firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email
+    });
 }

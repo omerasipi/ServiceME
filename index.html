@@ -37,18 +37,6 @@
         img-src * data:;">
 
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDG4GIjypq_Bzl2seXhjZBR5FwMEeNN4gA",
-                authDomain: "serviceme-69587.firebaseapp.com",
-                databaseURL: "https://serviceme-69587.firebaseio.com",
-                projectId: "serviceme-69587",
-                storageBucket: "serviceme-69587.appspot.com",
-                messagingSenderId: "326807269904"
-            };
-            firebase.initializeApp(config);
-        </script>
         <meta charset="UTF-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -112,20 +100,20 @@
                         <ul class="list">
                             <li class="list-item">
                                 <div class="list-item__center">
-                                    <input type="text" class="text-input" placeholder="Vorname">
+                                    <input type="text" class="text-input" id="vorname" placeholder="Vorname">
                                 </div>
                             </li>
                             <li class="list-item">
                                 <div class="list-item__center">
-                                    <input type="text" class="text-input" placeholder="Nachname">
+                                    <input type="text" class="text-input" id="nachname" placeholder="Nachname">
                                 </div>
                             </li>
                             <li class="list-item">
                                 <div class="list-item__center">
-                                    <input type="text" class="text-input" placeholder="Telefonnummer">
+                                    <input type="text" class="text-input" id="tel" placeholder="Telefonnummer">
                                 </div>
                             </li>
-                            <ons-button modifier="large" class="buttoni" id="b1">Absenden</ons-button>
+                            <ons-button modifier="large" class="buttoni" id="submitButton">Absenden</ons-button>
                         </ul>
                     </section>
                 </p>
