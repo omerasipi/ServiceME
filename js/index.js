@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -28,6 +29,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        geoFindMe();
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyDG4GIjypq_Bzl2seXhjZBR5FwMEeNN4gA",
@@ -44,6 +46,7 @@ var app = {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('beschreibung');
         });
+        readDB();
     },
 
     // Update DOM on a Received Event
@@ -56,32 +59,35 @@ var app = {
 
 
 function geoFindMe() {
-    var output = document.getElementById("out");
+
 
     if (!navigator.geolocation){
-        output.innerHTML = "<p>Geolokation wird von ihrem Browser nicht unterstützt</p>";
+        // output.innerHTML = "<p>Geolokation wird von ihrem Browser nicht unterstützt</p>";
         return;
     }
 
     function success(position) {
-        var latitude  = position.coords.latitude;
-        var longitude = position.coords.longitude;
+         var latitude  = position.coords.latitude;
+         var longitude = position.coords.longitude;
 
-        output.innerHTML = '<p>Die Latitude ist ' + latitude + '° <br>Die Longitude ist ' + longitude + '°</p>';
+         window.localStorage.setItem("latitude", latitude);
+         window.localStorage.setItem("longitude",longitude);
+        console.log("gps");
+        // output.innerHTML = '<p>Die Latitude ist ' + latitude + '° <br>Die Longitude ist ' + longitude + '°</p>';
 
-        var img = new Image();
-        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-        output.appendChild(img);
+        // var img = new Image();
+        // img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+        //
+        // output.appendChild(img);
     };
 
     function error() {
-        output.innerHTML = "Es war nicht möglich Sie zu lokalisieren";
+        // output.innerHTML = "Es war nicht möglich Sie zu lokalisieren";
     };
 
-    output.innerHTML = "<p>Lokalisieren…</p>";
-
+    // output.innerHTML = "<p>Lokalisieren…</p>";
     navigator.geolocation.getCurrentPosition(success, error);
+
 }
 app.initialize();
 
@@ -104,19 +110,51 @@ function submitButton() {
     var vorname = document.getElementById("vorname").value;
     var nachname = document.getElementById("nachname").value;
     var tel = document.getElementById("tel").value;
-    firebase.database().ref().push({
-        "id" : {
-            vorname: vorname,
-            nachname: nachname,
-            tel: tel
-        }
-    });
+    var latitude  = localStorage.getItem("latitude");
+    var longitude = localStorage.getItem("longitude");
+
+
+    var obj = {};
+    obj = {
+        "id": getdbId(),
+        "nachname": nachname,
+        "vorname": vorname,
+        "tel": tel,
+        "latitude": latitude,
+        "longitude": longitude
+    };
+
+    console.log(obj);
+    writeFirebaseObject(obj);
+
     console.log("geshikt!");
 }
 
-function writeUserData(userId, name, email) {
-    firebase.database().ref('users/' + userId).set({
-        username: name,
-        email: email
+function getdbId() {
+    var database = firebase.database();
+
+    return("1");
+}
+
+function writeFirebaseObject(obj) {
+    firebase.database().ref("tickets/").push(obj);
+}
+
+function readDB() {
+    var database = firebase.database();
+    // var firebaseHeadingRef = firebase.database().ref("tickets/1").child("vorname");
+    //
+    // firebaseHeadingRef.on('value', function (datasnapshot) {
+    //    console.log(datasnapshot.val());
+    // });
+
+    var leadsRef = database.ref('tickets/');
+    leadsRef.on('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            console.log(childData);
+        });
     });
+
+    console.log("okee");
 }
