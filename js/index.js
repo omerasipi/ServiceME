@@ -44,16 +44,6 @@ var app = {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('beschreibung');
         });
-            console.log("Keys");
-            window.localStorage.setItem("id","456");
-            var val = window.localStorage.getItem("id");
-            console.log(val);
-            localStorage.clear();
-            window.localStorage.setItem("omer", "facer");
-            window.localStorage.setItem("omeri", "facer");
-            window.localStorage.removeItem("omer");
-
-
     },
 
     // Update DOM on a Received Event
@@ -112,12 +102,16 @@ function displayVerwalten() {
 
 function submitButton() {
     var vorname = document.getElementById("vorname").value;
-    firebase.database().ref().set({
-        vorname: vorname
+    var nachname = document.getElementById("nachname").value;
+    var tel = document.getElementById("tel").value;
+    firebase.database().ref().push({
+        "id" : {
+            vorname: vorname,
+            nachname: nachname,
+            tel: tel
+        }
     });
-
-    window.alert("könig");
-
+    console.log("geshikt!");
 }
 
 function writeUserData(userId, name, email) {

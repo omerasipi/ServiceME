@@ -32,6 +32,8 @@
         default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
         style-src * 'unsafe-inline';
         script-src * 'unsafe-inline';
+        connect-src * 'unsafe-eval';
+        frame-src * 'unsafe-inline';
         font-src * 'unsafe-inline';
         media-src * blob:;
         img-src * data:;">
