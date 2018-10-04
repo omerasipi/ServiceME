@@ -44,6 +44,16 @@ var app = {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('beschreibung');
         });
+            console.log("Keys");
+            window.localStorage.setItem("id","456");
+            var val = window.localStorage.getItem("id");
+            console.log(val);
+            localStorage.clear();
+            window.localStorage.setItem("omer", "facer");
+            window.localStorage.setItem("omeri", "facer");
+            window.localStorage.removeItem("omer");
+
+
     },
 
     // Update DOM on a Received Event
