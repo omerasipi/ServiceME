@@ -29,6 +29,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        localStorage.clear();
         geoFindMe();
         // Initialize Firebase
         var config = {
@@ -46,7 +47,6 @@ var app = {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('beschreibung');
         });
-        readDB();
     },
 
     // Update DOM on a Received Event
@@ -112,16 +112,17 @@ function submitButton() {
     var tel = document.getElementById("tel").value;
     var latitude  = localStorage.getItem("latitude");
     var longitude = localStorage.getItem("longitude");
+    var time = Math.round(+new Date()/1000);
 
 
     var obj = {};
     obj = {
-        "id": getdbId(),
         "nachname": nachname,
         "vorname": vorname,
         "tel": tel,
         "latitude": latitude,
-        "longitude": longitude
+        "longitude": longitude,
+        "time": time,
     };
 
     console.log(obj);
@@ -131,9 +132,18 @@ function submitButton() {
 }
 
 function getdbId() {
-    var database = firebase.database();
+    readDB();
+    var total;
+    var dbID = localStorage.getItem("lastID");
+    if (dbID != null) {
 
-    return("1");
+        total = parseInt(dbID) + 1;
+
+    }
+    else {
+        total = 1;
+    }
+    return (total);
 }
 
 function writeFirebaseObject(obj) {
@@ -152,9 +162,9 @@ function readDB() {
     leadsRef.on('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             var childData = childSnapshot.val();
-            console.log(childData);
+            // console.log(childData.vorname);
         });
+        // localStorage.setItem("lastID", childData.id);
     });
-
     console.log("okee");
 }
