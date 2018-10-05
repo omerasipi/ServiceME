@@ -128,7 +128,10 @@ function submitButton() {
     console.log(obj);
     writeFirebaseObject(obj);
 
-    console.log("geshikt!");
+    //EIngabefelder löschen
+    clearInput();
+    // console.log("geshikt!");
+    window.alert("Das Ticket wurde eröffnet!");
 }
 
 function getdbId() {
@@ -167,4 +170,10 @@ function readDB() {
         // localStorage.setItem("lastID", childData.id);
     });
     console.log("okee");
+}
+
+function clearInput() {
+    document.getElementById("vorname").value = "";
+    document.getElementById("nachname").value = "";
+    document.getElementById("tel").value = "";
 }
